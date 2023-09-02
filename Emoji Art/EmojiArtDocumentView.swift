@@ -9,17 +9,35 @@ import SwiftUI
 
 struct EmojiArtDocumentView: View {
     
+    @ObservedObject var document: EmojiArtDocument
+    
     private let emojis = "👻🍎😃🤪☹️🤯🐶🐭🦁🐵🦆🐝🐢🐄🐖🌲🌴🌵🍄🌞🌎🔥🌈🌧️🌨️☁️⛄️⛳️🚗🚙🚓🚲🛺🏍️🚘✈️🛩️🚀🚁🏰🏠❤️💤⛵️"
     
     private let paletteEmojiSize: CGFloat = 50
     private let paddingSize: Int = 50
     
     var body: some View {
+        
         VStack(spacing: 0) {
-            Color(.systemYellow)
+            
+            documentBody
+            
             ScrollingEmojis(emojis)
                 .font(.system(size: paletteEmojiSize))
                 .padding(.horizontal)
+        }
+    }
+    
+    private var documentBody: some View {
+        
+        ZStack {
+            Color.white
+            // Image buraya gelecek
+            ForEach(document.emojis) { emoji in
+                    .font(emoji.font)
+                    .position(emoji.position)
+            }
+            
         }
     }
 }
@@ -44,7 +62,7 @@ struct ScrollingEmojis: View {
     
     struct EmojiArtDocumentView_Previews: PreviewProvider {
         static var previews: some View {
-            EmojiArtDocumentView()
+            EmojiArtDocumentView(document: EmojiArtDocument())
         }
     }
 }

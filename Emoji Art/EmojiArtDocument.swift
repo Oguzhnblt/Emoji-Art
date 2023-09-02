@@ -11,8 +11,8 @@ import SwiftUI
 
 class EmojiArtDocument: ObservableObject {
     
-    typealias Emoji = EmojiArt.Emoji 
-        
+    typealias Emoji = EmojiArt.Emoji
+    
     private var emojiArt = EmojiArt()      // EmojiArt Modelinde boş bir dize olarak oluşturduğumuz için init()'e ihtiyacımız yok.
     
     var emojis: [Emoji] {
@@ -28,5 +28,9 @@ class EmojiArtDocument: ObservableObject {
     func setBackground(_ url: URL?) {
         emojiArt.background = url
     }
+    
+    func addEmoji(_ emoji: String, at position: Emoji.Position, size: CGFloat) {
+        emojiArt.addEmoji(emoji, at: position, size: Int(size))
+    }
+    
 }
-
