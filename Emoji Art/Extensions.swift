@@ -8,6 +8,7 @@
 import SwiftUI
 
 typealias CGOffset = CGSize
+
 // MARK: STRING EXTENSION
 
 extension String {
@@ -20,6 +21,8 @@ extension String {
     }
 }
 
+// MARK: CGRect EXTENSION
+
 extension CGRect {
     var center: CGPoint {
         CGPoint(x: midX, y:midY)
@@ -28,6 +31,8 @@ extension CGRect {
         self.init(origin: CGPoint(x: center.x-size.width/2, y: center.y-size.height/2), size: size)
     }
 }
+
+// MARK: CGOffset EXTENSION
 
 extension CGOffset {
     static func +(lhs: CGOffset, rhs: CGOffset) -> CGOffset {
@@ -38,11 +43,15 @@ extension CGOffset {
     }
 }
 
+// MARK: Font EXTENSION
+
 extension EmojiArt.Emoji {
     var font: Font {
         Font.system(size: CGFloat(size))
     }
 }
+
+// MARK: Position EXTENSION
 
 extension EmojiArt.Emoji.Position {
     func `in`(_ geometry: GeometryProxy) -> CGPoint {
